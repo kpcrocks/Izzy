@@ -1,6 +1,7 @@
 {
   "name": "izzy",
   "version": "0.1.0",
+  "ignore": ["node_modules/"],
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
