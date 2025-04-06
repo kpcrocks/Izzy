@@ -3,11 +3,11 @@ import Image from 'next/image';
 
 export default function Home() {
   return (
-    <div className="min-h-screen bg-beige">
+    <div className="min-h-screen bg-[#f5f5dc]">
       {/* Header with Logo */}
-      <header className="w-full py-8 px-8 text-center">
-        <h1 className="text-4xl font-serif italic mb-2 text-black">Izzles</h1>
-        <p className="text-sm text-black uppercase tracking-wider">By Tommy Truong</p>
+      <header className="w-full py-12 px-8 text-center">
+        <h1 className="text-5xl font-serif mb-3 text-black">Izzles</h1>
+        <p className="text-sm text-black uppercase tracking-[0.2em]">Minimalist Designs for the Soul</p>
         
         {/* Social Icons */}
         <div className="absolute top-8 right-8 flex gap-4">
@@ -30,93 +30,150 @@ export default function Home() {
       </header>
 
       {/* Navigation */}
-      <nav className="w-full border-y border-gray-200 py-4 mb-12">
-        <ul className="flex justify-center space-x-8 text-sm uppercase tracking-wider">
-          <li><Link href="/" className="text-black font-medium hover:text-gray-600">Home</Link></li>
-          <li><Link href="/fashion" className="text-black hover:text-gray-900">Fashion</Link></li>
-          <li><Link href="/lifestyle" className="text-black hover:text-gray-900">Lifestyle</Link></li>
-          <li><Link href="/beauty" className="text-black hover:text-gray-900">Beauty</Link></li>
-          <li><Link href="/travel" className="text-black hover:text-gray-900">Travel</Link></li>
-          <li><Link href="/shop" className="text-black hover:text-gray-900">Shop</Link></li>
+      <nav className="w-full border-y border-black/10 py-6 mb-16">
+        <ul className="flex justify-center space-x-12 text-sm uppercase tracking-[0.15em]">
+          <li><Link href="/" className="text-black hover:text-black/60 transition-colors">Home</Link></li>
+          <li><Link href="/shop" className="text-black hover:text-black/60 transition-colors">Shop</Link></li>
+          <li><Link href="/about" className="text-black hover:text-black/60 transition-colors">Our Story</Link></li>
+          <li><Link href="/contact" className="text-black hover:text-black/60 transition-colors">Contact</Link></li>
         </ul>
       </nav>
 
       <main className="max-w-7xl mx-auto px-8 py-8">
-        {/* Featured Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Featured Item 1 */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
-              <Image src="/path/to/product1.jpg" alt="Product 1" layout="fill" objectFit="cover" />
+        {/* Hero Section */}
+        <div className="text-center mb-24">
+          <h2 className="text-4xl font-serif mb-6 text-black">Wear Your Journey</h2>
+          <p className="text-lg text-black/70 max-w-2xl mx-auto mb-8">Each piece tells a story of grace, adventure, and the mountains that move us.</p>
+          <Link href="/shop" className="inline-block border-2 border-black px-12 py-4 text-black uppercase tracking-wider hover:bg-black hover:text-white transition-colors">
+            Explore Collection
+          </Link>
+        </div>
+
+        {/* Featured Products */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
+          {/* Grace T-Shirt */}
+          <div className="group cursor-pointer">
+            <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
+              <Image 
+                src="/products/grace-tshirt.jpg"
+                alt="Saved by Grace T-Shirt" 
+                layout="fill"
+                objectFit="cover"
+                className="group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 p-4">
-              <h3 className="text-xl font-serif text-black">Product 1</h3>
+            <div className="text-center">
+              <p className="text-xs text-black/60 uppercase tracking-wider mb-2">Essential Collection</p>
+              <h3 className="text-xl font-serif text-black">Saved by Grace Tee</h3>
+              <p className="mt-2 text-black/80">$35.00</p>
             </div>
           </div>
 
-          {/* Featured Item 2 */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
-              <div className="w-full h-full bg-gray-200 group-hover:scale-105 transition-transform duration-300"></div>
+          {/* Duplicate Grace T-Shirt for Mountain T-Shirt */}
+          <div className="group cursor-pointer">
+            <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
+              <Image 
+                src="/products/grace-tshirt.jpg"
+                alt="Saved by Grace T-Shirt" 
+                layout="fill"
+                objectFit="cover"
+                className="group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 p-4">
-              <div className="text-xs text-gray-500 uppercase mb-2">Featured</div>
-              <h3 className="text-xl font-serif">Style Guide</h3>
+            <div className="text-center">
+              <p className="text-xs text-black/60 uppercase tracking-wider mb-2">New Arrival</p>
+              <h3 className="text-xl font-serif text-black">Mountain Faith Tee</h3>
+              <p className="mt-2 text-black/80">$35.00</p>
             </div>
           </div>
 
-          {/* Featured Item 3 */}
-          <div className="relative group cursor-pointer">
-            <div className="aspect-[3/4] bg-gray-100 mb-4 overflow-hidden">
-              <div className="w-full h-full bg-gray-200 group-hover:scale-105 transition-transform duration-300"></div>
+          {/* Duplicate Grace T-Shirt for Minimal Design */}
+          <div className="group cursor-pointer">
+            <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
+              <Image 
+                src="/products/grace-tshirt.jpg"
+                alt="Saved by Grace T-Shirt" 
+                layout="fill"
+                objectFit="cover"
+                className="group-hover:scale-105 transition-transform duration-500"
+              />
             </div>
-            <div className="absolute bottom-4 left-4 right-4 bg-white/90 p-4">
-              <div className="text-xs text-gray-500 uppercase mb-2">Trending</div>
-              <h3 className="text-xl font-serif">Latest Arrivals</h3>
+            <div className="text-center">
+              <p className="text-xs text-black/60 uppercase tracking-wider mb-2">Bestseller</p>
+              <h3 className="text-xl font-serif text-black">Minimal Script Tee</h3>
+              <p className="mt-2 text-black/80">$35.00</p>
             </div>
           </div>
         </div>
 
-        {/* Blog Section */}
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold mb-4 text-black">Latest from the Blog</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-gray-100 p-4 rounded-lg">
-              <h3 className="text-xl font-semibold text-black">Blog Post Title 1</h3>
-              <p className="text-black">A brief description of the blog post...</p>
-              <Link href="/blog/post1" className="text-purple-600 hover:underline">Read More</Link>
-            </div>
-            {/* Repeat for more blog posts */}
+        {/* Values Section */}
+        <section className="grid grid-cols-1 md:grid-cols-3 gap-12 py-24 border-y border-black/10">
+          <div className="text-center">
+            <h3 className="font-serif text-xl mb-4 text-black">Mindful Design</h3>
+            <p className="text-black/70">Every piece is thoughtfully created to inspire and uplift.</p>
+          </div>
+          <div className="text-center">
+            <h3 className="font-serif text-xl mb-4 text-black">Quality Materials</h3>
+            <p className="text-black/70">Premium cotton blend for lasting comfort and style.</p>
+          </div>
+          <div className="text-center">
+            <h3 className="font-serif text-xl mb-4 text-black">Made with Purpose</h3>
+            <p className="text-black/70">Clothing that carries meaning and spreads positivity.</p>
           </div>
         </section>
 
-        {/* Testimonials Section */}
-        <section className="mt-16">
-          <h2 className="text-3xl font-bold mb-4 text-black">What Our Customers Say</h2>
-          <div className="bg-gray-100 p-4 rounded-lg">
-            <p className="italic text-black">"I love my new products! They are stylish and high quality!"</p>
-            <p className="text-right text-black">- Happy Customer</p>
+        {/* Newsletter Section */}
+        <section className="py-24 text-center max-w-2xl mx-auto">
+          <h2 className="text-3xl font-serif mb-6 text-black">Join Our Journey</h2>
+          <p className="text-black/70 mb-8">Subscribe to receive updates on new collections, exclusive offers, and stories of inspiration.</p>
+          <div className="flex gap-4 justify-center">
+            <input 
+              type="email" 
+              placeholder="Your email address" 
+              className="px-6 py-3 border-2 border-black/10 w-full max-w-sm focus:outline-none focus:border-black"
+            />
+            <button className="px-8 py-3 bg-black text-white uppercase tracking-wider hover:bg-black/80 transition-colors">
+              Subscribe
+            </button>
           </div>
-          {/* Repeat for more testimonials */}
-        </section>
-
-        {/* Newsletter Signup */}
-        <section className="mt-16 text-center">
-          <h2 className="text-3xl font-bold mb-4 text-black">Stay Updated</h2>
-          <p className="mb-4 text-black">Sign up for our newsletter to receive the latest news and exclusive offers.</p>
-          <input type="email" placeholder="Your email address" className="border p-2 rounded" />
-          <button className="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">Subscribe</button>
         </section>
       </main>
 
       {/* Footer */}
-      <footer className="bg-gray-200 py-4">
-        <div className="max-w-7xl mx-auto text-center">
-          <p className="text-black">© 2023 Izzles. All rights reserved.</p>
-          <div className="flex justify-center space-x-4 mt-2">
-            <Link href="/about" className="text-black hover:text-gray-900">About</Link>
-            <Link href="/contact" className="text-black hover:text-gray-900">Contact</Link>
-            <Link href="/privacy" className="text-black hover:text-gray-900">Privacy Policy</Link>
+      <footer className="border-t border-black/10 py-16">
+        <div className="max-w-7xl mx-auto px-8">
+          <div className="grid grid-cols-1 md:grid-cols-4 gap-12 text-center md:text-left">
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-black">About Izzles</h4>
+              <p className="text-black/70">Creating meaningful designs that inspire and connect.</p>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-black">Quick Links</h4>
+              <ul className="space-y-2">
+                <li><Link href="/shop" className="text-black/70 hover:text-black">Shop All</Link></li>
+                <li><Link href="/about" className="text-black/70 hover:text-black">Our Story</Link></li>
+                <li><Link href="/contact" className="text-black/70 hover:text-black">Contact</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-black">Customer Care</h4>
+              <ul className="space-y-2">
+                <li><Link href="/shipping" className="text-black/70 hover:text-black">Shipping Info</Link></li>
+                <li><Link href="/returns" className="text-black/70 hover:text-black">Returns</Link></li>
+                <li><Link href="/size-guide" className="text-black/70 hover:text-black">Size Guide</Link></li>
+              </ul>
+            </div>
+            <div>
+              <h4 className="font-serif text-lg mb-4 text-black">Connect</h4>
+              <ul className="space-y-2">
+                <li><Link href="/instagram" className="text-black/70 hover:text-black">Instagram</Link></li>
+                <li><Link href="/facebook" className="text-black/70 hover:text-black">Facebook</Link></li>
+                <li><Link href="/twitter" className="text-black/70 hover:text-black">Twitter</Link></li>
+              </ul>
+            </div>
+          </div>
+          <div className="text-center mt-16 text-black/60">
+            <p>© 2024 Izzles. All rights reserved.</p>
           </div>
         </div>
       </footer>
