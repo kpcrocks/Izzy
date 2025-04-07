@@ -6,10 +6,45 @@
       "static/css/app/layout.css",
       "static/chunks/app/layout.js"
     ],
+    "/products/minimal-script/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/products/minimal-script/page.js"
+    ],
+    "/products/mountain-faith/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/products/mountain-faith/page.js"
+    ],
+    "/products/grace-tshirt/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/products/grace-tshirt/page.js"
+    ],
     "/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/page.js"
+    ],
+    "/essentials/shop-page/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/essentials/shop-page/page.js"
+    ],
+    "/essentials/terms-of-service-page/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/essentials/terms-of-service-page/page.js"
+    ],
+    "/essentials/contact-page/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/essentials/contact-page/page.js"
+    ],
+    "/essentials/about-page/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/essentials/about-page/page.js"
     ]
   }
 }

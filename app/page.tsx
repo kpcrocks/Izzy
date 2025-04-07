@@ -33,9 +33,9 @@ export default function Home() {
       <nav className="w-full border-y border-black/10 py-6 mb-16">
         <ul className="flex justify-center space-x-12 text-sm uppercase tracking-[0.15em]">
           <li><Link href="/" className="text-black hover:text-black/60 transition-colors">Home</Link></li>
-          <li><Link href="/shop" className="text-black hover:text-black/60 transition-colors">Shop</Link></li>
-          <li><Link href="/about" className="text-black hover:text-black/60 transition-colors">Our Story</Link></li>
-          <li><Link href="/contact" className="text-black hover:text-black/60 transition-colors">Contact</Link></li>
+          <li><Link href="/essentials/shop-page" className="text-black hover:text-black/60 transition-colors">Shop</Link></li>
+          <li><Link href="/essentials/about-page" className="text-black hover:text-black/60 transition-colors">Our Story</Link></li>
+          <li><Link href="/essentials/contact-page" className="text-black hover:text-black/60 transition-colors">Contact</Link></li>
         </ul>
       </nav>
 
@@ -52,7 +52,7 @@ export default function Home() {
         {/* Featured Products */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
           {/* Grace T-Shirt */}
-          <div className="group cursor-pointer">
+          <Link href="/products/grace-tshirt" className="group cursor-pointer">
             <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
               <Image 
                 src="/products/grace-tshirt.jpg"
@@ -67,14 +67,14 @@ export default function Home() {
               <h3 className="text-xl font-serif text-black">Saved by Grace Tee</h3>
               <p className="mt-2 text-black/80">$35.00</p>
             </div>
-          </div>
+          </Link>
 
-          {/* Duplicate Grace T-Shirt for Mountain T-Shirt */}
-          <div className="group cursor-pointer">
+          {/* Mountain T-Shirt */}
+          <Link href="/products/mountain-faith" className="group cursor-pointer">
             <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
               <Image 
                 src="/products/grace-tshirt.jpg"
-                alt="Saved by Grace T-Shirt" 
+                alt="Faith Can Move Mountains T-Shirt" 
                 layout="fill"
                 objectFit="cover"
                 className="group-hover:scale-105 transition-transform duration-500"
@@ -85,14 +85,14 @@ export default function Home() {
               <h3 className="text-xl font-serif text-black">Mountain Faith Tee</h3>
               <p className="mt-2 text-black/80">$35.00</p>
             </div>
-          </div>
+          </Link>
 
-          {/* Duplicate Grace T-Shirt for Minimal Design */}
-          <div className="group cursor-pointer">
+          {/* Minimal Script */}
+          <Link href="/products/minimal-script" className="group cursor-pointer">
             <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
               <Image 
                 src="/products/grace-tshirt.jpg"
-                alt="Saved by Grace T-Shirt" 
+                alt="Minimal Design T-Shirt" 
                 layout="fill"
                 objectFit="cover"
                 className="group-hover:scale-105 transition-transform duration-500"
@@ -103,7 +103,7 @@ export default function Home() {
               <h3 className="text-xl font-serif text-black">Minimal Script Tee</h3>
               <p className="mt-2 text-black/80">$35.00</p>
             </div>
-          </div>
+          </Link>
         </div>
 
         {/* Values Section */}
@@ -150,9 +150,10 @@ export default function Home() {
             <div>
               <h4 className="font-serif text-lg mb-4 text-black">Quick Links</h4>
               <ul className="space-y-2">
-                <li><Link href="/shop" className="text-black/70 hover:text-black">Shop All</Link></li>
-                <li><Link href="/about" className="text-black/70 hover:text-black">Our Story</Link></li>
-                <li><Link href="/contact" className="text-black/70 hover:text-black">Contact</Link></li>
+                <li><Link href="/essentials/shop-page" className="text-black/70 hover:text-black">Shop All</Link></li>
+                <li><Link href="/essentials/about-page" className="text-black/70 hover:text-black">Our Story</Link></li>
+                <li><Link href="/essentials/contact-page" className="text-black/70 hover:text-black">Contact</Link></li>
+                <li><Link href="/essentials/terms-of-service-page" className="text-black/70 hover:text-black">Terms of Service</Link></li>
               </ul>
             </div>
             <div>
@@ -160,7 +161,7 @@ export default function Home() {
               <ul className="space-y-2">
                 <li><Link href="/shipping" className="text-black/70 hover:text-black">Shipping Info</Link></li>
                 <li><Link href="/returns" className="text-black/70 hover:text-black">Returns</Link></li>
-                <li><Link href="/size-guide" className="text-black/70 hover:text-black">Size Guide</Link></li>
+                <li><Link href="/essentials/size-guide-page" className="text-black/70 hover:text-black">Size Guide</Link></li>
               </ul>
             </div>
             <div>
