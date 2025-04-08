@@ -1,7 +1,12 @@
+'use client';
+
 import Link from 'next/link';
 import Image from 'next/image';
+import { useCart } from './context/CartContext';
 
 export default function Home() {
+  const { items, addItem } = useCart();
+
   return (
     <div className="min-h-screen bg-[#f5f5dc]">
       {/* Header with Logo */}
@@ -10,11 +15,16 @@ export default function Home() {
         <p className="text-sm text-black uppercase tracking-[0.2em]">Minimalist Designs for the Soul</p>
         
         {/* Social Icons */}
-        <div className="absolute top-8 right-8 flex gap-4">
-          <Link href="#" className="text-gray-400 hover:text-gray-600">
-            <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-              <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+        <div className="absolute top-8 right-8 flex gap-4 items-center">
+          <Link href="/cart" className="text-gray-400 hover:text-gray-600 relative">
+            <svg className="w-6 h-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+              <path d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"></path>
             </svg>
+            {items.length > 0 && (
+              <span className="absolute -top-2 -right-2 bg-black text-white text-xs rounded-full h-5 w-5 flex items-center justify-center">
+                {items.length}
+              </span>
+            )}
           </Link>
           <Link href="#" className="text-gray-400 hover:text-gray-600">
             <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
@@ -52,58 +62,97 @@ export default function Home() {
         {/* Featured Products */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-24">
           {/* Grace T-Shirt */}
-          <Link href="/products/grace-tshirt" className="group cursor-pointer">
-            <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
-              <Image 
-                src="/products/grace-tshirt.jpg"
-                alt="Saved by Grace T-Shirt" 
-                layout="fill"
-                objectFit="cover"
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+          <div className="group">
+            <Link href="/products/grace-tshirt" className="block cursor-pointer">
+              <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
+                <Image 
+                  src="/products/grace-tshirt.jpg"
+                  alt="Saved by Grace T-Shirt" 
+                  layout="fill"
+                  objectFit="cover"
+                  className="group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-xs text-black/60 uppercase tracking-wider mb-2">Essential Collection</p>
+                <h3 className="text-xl font-serif text-black">Saved by Grace Tee</h3>
+                <p className="mt-2 text-black/80">$35.00</p>
+              </div>
+            </Link>
             <div className="text-center">
-              <p className="text-xs text-black/60 uppercase tracking-wider mb-2">Essential Collection</p>
-              <h3 className="text-xl font-serif text-black">Saved by Grace Tee</h3>
-              <p className="mt-2 text-black/80">$35.00</p>
+              <button 
+                onClick={() => {
+                  addItem({ id: 'grace-tshirt', name: 'Saved by Grace Tee', price: 35.00, quantity: 1, size: 'M', image: '/products/grace-tshirt.jpg' });
+                  alert('Added to cart!');
+                }} 
+                className="mt-4 w-full bg-black text-white py-3 uppercase tracking-wider hover:bg-black/80 transition-colors rounded-sm"
+              >
+                Add to Cart
+              </button>
             </div>
-          </Link>
+          </div>
 
           {/* Mountain T-Shirt */}
-          <Link href="/products/mountain-faith" className="group cursor-pointer">
-            <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
-              <Image 
-                src="/products/grace-tshirt.jpg"
-                alt="Faith Can Move Mountains T-Shirt" 
-                layout="fill"
-                objectFit="cover"
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+          <div className="group">
+            <Link href="/products/mountain-faith" className="block cursor-pointer">
+              <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
+                <Image 
+                  src="/products/mountain-faith.jpg"
+                  alt="Faith Can Move Mountains T-Shirt" 
+                  layout="fill"
+                  objectFit="cover"
+                  className="group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-xs text-black/60 uppercase tracking-wider mb-2">New Arrival</p>
+                <h3 className="text-xl font-serif text-black">Mountain Faith Tee</h3>
+                <p className="mt-2 text-black/80">$35.00</p>
+              </div>
+            </Link>
             <div className="text-center">
-              <p className="text-xs text-black/60 uppercase tracking-wider mb-2">New Arrival</p>
-              <h3 className="text-xl font-serif text-black">Mountain Faith Tee</h3>
-              <p className="mt-2 text-black/80">$35.00</p>
+              <button 
+                onClick={() => {
+                  addItem({ id: 'mountain-faith', name: 'Mountain Faith Tee', price: 35.00, quantity: 1, size: 'M', image: '/products/mountain-faith.jpg' });
+                  alert('Added to cart!');
+                }} 
+                className="mt-4 w-full bg-black text-white py-3 uppercase tracking-wider hover:bg-black/80 transition-colors rounded-sm"
+              >
+                Add to Cart
+              </button>
             </div>
-          </Link>
+          </div>
 
           {/* Minimal Script */}
-          <Link href="/products/minimal-script" className="group cursor-pointer">
-            <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
-              <Image 
-                src="/products/grace-tshirt.jpg"
-                alt="Minimal Design T-Shirt" 
-                layout="fill"
-                objectFit="cover"
-                className="group-hover:scale-105 transition-transform duration-500"
-              />
-            </div>
+          <div className="group">
+            <Link href="/products/minimal-script" className="block cursor-pointer">
+              <div className="aspect-[3/4] bg-white mb-4 overflow-hidden relative">
+                <Image 
+                  src="/products/minimal-script.jpg"
+                  alt="Minimal Design T-Shirt" 
+                  layout="fill"
+                  objectFit="cover"
+                  className="group-hover:scale-105 transition-transform duration-500"
+                />
+              </div>
+              <div className="text-center">
+                <p className="text-xs text-black/60 uppercase tracking-wider mb-2">Bestseller</p>
+                <h3 className="text-xl font-serif text-black">Minimal Script Tee</h3>
+                <p className="mt-2 text-black/80">$35.00</p>
+              </div>
+            </Link>
             <div className="text-center">
-              <p className="text-xs text-black/60 uppercase tracking-wider mb-2">Bestseller</p>
-              <h3 className="text-xl font-serif text-black">Minimal Script Tee</h3>
-              <p className="mt-2 text-black/80">$35.00</p>
+              <button 
+                onClick={() => {
+                  addItem({ id: 'minimal-script', name: 'Minimal Script Tee', price: 35.00, quantity: 1, size: 'M', image: '/products/minimal-script.jpg' });
+                  alert('Added to cart!');
+                }} 
+                className="mt-4 w-full bg-black text-white py-3 uppercase tracking-wider hover:bg-black/80 transition-colors rounded-sm"
+              >
+                Add to Cart
+              </button>
             </div>
-          </Link>
+          </div>
         </div>
 
         {/* Values Section */}

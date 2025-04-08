@@ -1,9 +1,7 @@
 {
-  "/products/mountain-faith/page": "app/products/mountain-faith/page.js",
-  "/products/grace-tshirt/page": "app/products/grace-tshirt/page.js",
-  "/essentials/shop-page/page": "app/essentials/shop-page/page.js",
-  "/essentials/contact-page/page": "app/essentials/contact-page/page.js",
-  "/essentials/terms-of-service-page/page": "app/essentials/terms-of-service-page/page.js",
+  "/_not-found/page": "app/_not-found/page.js",
   "/page": "app/page.js",
-  "/essentials/about-page/page": "app/essentials/about-page/page.js"
+  "/products/grace-tshirt/page": "app/products/grace-tshirt/page.js",
+  "/products/mountain-faith/page": "app/products/mountain-faith/page.js",
+  "/cart/page": "app/cart/page.js"
 }
