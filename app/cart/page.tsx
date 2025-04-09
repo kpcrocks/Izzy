@@ -4,10 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '../context/CartContext';
 import { useState } from 'react';
-import { loadStripe } from '@stripe/stripe-js';
-
-// Initialize Stripe
-const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
+import { toast } from 'react-toastify';
 
 export default function Cart() {
   const { items, removeItem, updateQuantity } = useCart();
@@ -39,23 +36,28 @@ export default function Cart() {
         }),
       });
 
-      const { sessionId } = await response.json();
+      const data = await response.json();
 
-      // Redirect to Stripe Checkout
-      const stripe = await stripePromise;
-      if (stripe) {
-        const { error } = await stripe.redirectToCheckout({ sessionId });
-        if (error) {
-          console.error('Error:', error);
-          alert('An error occurred. Please try again.');
-        }
+      if (!response.ok) {
+        throw new Error(data.error || 'Failed to create checkout session');
       }
+
+      if (!data.url) {
+        throw new Error('No checkout URL received');
+      }
+      
+      // Redirect to Stripe's hosted checkout page
+      window.location.href = data.url;
     } catch (error) {
       console.error('Error:', error);
-      alert('An error occurred. Please try again.');
-    } finally {
+      toast.error(error instanceof Error ? error.message : 'An error occurred. Please try again.');
       setIsProcessing(false);
     }
+  };
+
+  const handleRemoveItem = (id: string) => {
+    removeItem(id);
+    toast.success('Item removed from cart');
   };
 
   return (
@@ -99,7 +101,10 @@ export default function Cart() {
                     <div className="flex items-center gap-4">
                       <select
                         value={item.quantity}
-                        onChange={(e) => updateQuantity(item.id, parseInt(e.target.value))}
+                        onChange={(e) => {
+                          updateQuantity(item.id, parseInt(e.target.value));
+                          toast.success('Quantity updated');
+                        }}
                         className="border border-black/10 rounded px-2 py-1"
                       >
                         {[1, 2, 3, 4, 5].map((num) => (
@@ -109,7 +114,7 @@ export default function Cart() {
                         ))}
                       </select>
                       <button
-                        onClick={() => removeItem(item.id)}
+                        onClick={() => handleRemoveItem(item.id)}
                         className="text-black/60 hover:text-black text-sm"
                       >
                         Remove

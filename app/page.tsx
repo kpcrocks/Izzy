@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from './context/CartContext';
+import { toast } from 'react-toastify';
 
 export default function Home() {
   const { items, addItem } = useCart();
@@ -83,7 +84,7 @@ export default function Home() {
               <button 
                 onClick={() => {
                   addItem({ id: 'grace-tshirt', name: 'Saved by Grace Tee', price: 35.00, quantity: 1, size: 'M', image: '/products/grace-tshirt.jpg' });
-                  alert('Added to cart!');
+                  toast.success('Added to cart!');
                 }} 
                 className="mt-4 w-full bg-black text-white py-3 uppercase tracking-wider hover:bg-black/80 transition-colors rounded-sm"
               >
@@ -114,7 +115,7 @@ export default function Home() {
               <button 
                 onClick={() => {
                   addItem({ id: 'mountain-faith', name: 'Mountain Faith Tee', price: 35.00, quantity: 1, size: 'M', image: '/products/mountain-faith.jpg' });
-                  alert('Added to cart!');
+                  toast.success('Added to cart!');
                 }} 
                 className="mt-4 w-full bg-black text-white py-3 uppercase tracking-wider hover:bg-black/80 transition-colors rounded-sm"
               >
@@ -145,7 +146,7 @@ export default function Home() {
               <button 
                 onClick={() => {
                   addItem({ id: 'minimal-script', name: 'Minimal Script Tee', price: 35.00, quantity: 1, size: 'M', image: '/products/minimal-script.jpg' });
-                  alert('Added to cart!');
+                  toast.success('Added to cart!');
                 }} 
                 className="mt-4 w-full bg-black text-white py-3 uppercase tracking-wider hover:bg-black/80 transition-colors rounded-sm"
               >
