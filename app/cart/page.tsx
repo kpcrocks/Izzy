@@ -3,13 +3,60 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '../context/CartContext';
+import { useState } from 'react';
+import { loadStripe } from '@stripe/stripe-js';
+
+// Initialize Stripe
+const stripePromise = loadStripe(process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY!);
 
 export default function Cart() {
   const { items, removeItem, updateQuantity } = useCart();
+  const [isProcessing, setIsProcessing] = useState(false);
 
   const subtotal = items.reduce((total, item) => total + (item.price * item.quantity), 0);
   const shipping = 5.00;
   const total = subtotal + shipping;
+
+  const handleCheckout = async () => {
+    setIsProcessing(true);
+    try {
+      // Create a checkout session
+      const response = await fetch('/api/create-checkout-session', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          items: items.map(item => ({
+            id: item.id,
+            name: item.name,
+            price: item.price,
+            quantity: item.quantity,
+            size: item.size,
+            image: item.image
+          })),
+          shipping
+        }),
+      });
+
+      const { sessionId } = await response.json();
+
+      // Redirect to Stripe Checkout
+      const stripe = await stripePromise;
+      if (stripe) {
+        const { error } = await stripe.redirectToCheckout({ sessionId });
+        if (error) {
+          console.error('Error:', error);
+          alert('An error occurred. Please try again.');
+        }
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('An error occurred. Please try again.');
+    } finally {
+      setIsProcessing(false);
+    }
+  };
 
   return (
     <div className="min-h-screen bg-[#f5f5dc]">
@@ -94,9 +141,11 @@ export default function Cart() {
                 </div>
               </div>
               <button 
-                className="w-full bg-black text-white py-3 rounded uppercase tracking-wider hover:bg-black/80 transition-colors"
+                onClick={handleCheckout}
+                disabled={isProcessing}
+                className="w-full bg-black text-white py-3 rounded uppercase tracking-wider hover:bg-black/80 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Proceed to Checkout
+                {isProcessing ? 'Processing...' : 'Proceed to Checkout'}
               </button>
               <Link 
                 href="/essentials/shop-page" 
