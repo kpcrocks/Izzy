@@ -11,73 +11,13 @@ exports.id = "vendor-chunks/react-toastify";
 exports.ids = ["vendor-chunks/react-toastify"];
 exports.modules = {
 
-/***/ "(rsc)/./node_modules/react-toastify/dist/ReactToastify.css":
+/***/ "(ssr)/./node_modules/react-toastify/dist/ReactToastify.css":
 /*!************************************************************!*\
   !*** ./node_modules/react-toastify/dist/ReactToastify.css ***!
   \************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
-eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (\"8d15c78def2f\");\nif (false) {}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHJzYykvLi9ub2RlX21vZHVsZXMvcmVhY3QtdG9hc3RpZnkvZGlzdC9SZWFjdFRvYXN0aWZ5LmNzcyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsaUVBQWUsY0FBYztBQUM3QixJQUFJLEtBQVUsRUFBRSxFQUF1QiIsInNvdXJjZXMiOlsiL1VzZXJzL3RvbW15dHJ1b25nL0RvY3VtZW50cy9HaXRIdWIvSXp6eS9ub2RlX21vZHVsZXMvcmVhY3QtdG9hc3RpZnkvZGlzdC9SZWFjdFRvYXN0aWZ5LmNzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBcIjhkMTVjNzhkZWYyZlwiXG5pZiAobW9kdWxlLmhvdCkgeyBtb2R1bGUuaG90LmFjY2VwdCgpIH1cbiJdLCJuYW1lcyI6W10sImlnbm9yZUxpc3QiOlswXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(rsc)/./node_modules/react-toastify/dist/ReactToastify.css\n");
-
-/***/ }),
-
-/***/ "(rsc)/./node_modules/react-toastify/dist/index.mjs":
-/*!****************************************************!*\
-  !*** ./node_modules/react-toastify/dist/index.mjs ***!
-  \****************************************************/
-/***/ ((__unused_webpack___webpack_module__, __webpack_exports__, __webpack_require__) => {
-
-__webpack_require__.r(__webpack_exports__);
-/* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   Bounce: () => (/* binding */ Bounce),
-/* harmony export */   Flip: () => (/* binding */ Flip),
-/* harmony export */   Icons: () => (/* binding */ Icons),
-/* harmony export */   Slide: () => (/* binding */ Slide),
-/* harmony export */   ToastContainer: () => (/* binding */ ToastContainer),
-/* harmony export */   Zoom: () => (/* binding */ Zoom),
-/* harmony export */   collapseToast: () => (/* binding */ collapseToast),
-/* harmony export */   cssTransition: () => (/* binding */ cssTransition),
-/* harmony export */   toast: () => (/* binding */ toast)
-/* harmony export */ });
-/* harmony import */ var react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react-server-dom-webpack/server.edge */ "(rsc)/./node_modules/next/dist/server/route-modules/app-page/vendored/rsc/react-server-dom-webpack-server-edge.js");
-
-const Bounce = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call Bounce() from the server but Bounce is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"Bounce",
-);const Flip = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call Flip() from the server but Flip is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"Flip",
-);const Icons = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call Icons() from the server but Icons is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"Icons",
-);const Slide = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call Slide() from the server but Slide is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"Slide",
-);const ToastContainer = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call ToastContainer() from the server but ToastContainer is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"ToastContainer",
-);const Zoom = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call Zoom() from the server but Zoom is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"Zoom",
-);const collapseToast = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call collapseToast() from the server but collapseToast is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"collapseToast",
-);const cssTransition = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call cssTransition() from the server but cssTransition is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"cssTransition",
-);const toast = (0,react_server_dom_webpack_server_edge__WEBPACK_IMPORTED_MODULE_0__.registerClientReference)(
-function() { throw new Error("Attempted to call toast() from the server but toast is on the client. It's not possible to invoke a client function from the server, it can only be rendered as a Component or passed to props of a Client Component."); },
-"/Users/tommytruong/Documents/GitHub/Izzy/node_modules/react-toastify/dist/index.mjs",
-"toast",
-);
+eval("__webpack_require__.r(__webpack_exports__);\n/* harmony export */ __webpack_require__.d(__webpack_exports__, {\n/* harmony export */   \"default\": () => (__WEBPACK_DEFAULT_EXPORT__)\n/* harmony export */ });\n/* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (\"8d15c78def2f\");\nif (false) {}\n//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJmaWxlIjoiKHNzcikvLi9ub2RlX21vZHVsZXMvcmVhY3QtdG9hc3RpZnkvZGlzdC9SZWFjdFRvYXN0aWZ5LmNzcyIsIm1hcHBpbmdzIjoiOzs7O0FBQUEsaUVBQWUsY0FBYztBQUM3QixJQUFJLEtBQVUsRUFBRSxFQUF1QiIsInNvdXJjZXMiOlsiL1VzZXJzL3RvbW15dHJ1b25nL0RvY3VtZW50cy9HaXRIdWIvSXp6eS9ub2RlX21vZHVsZXMvcmVhY3QtdG9hc3RpZnkvZGlzdC9SZWFjdFRvYXN0aWZ5LmNzcyJdLCJzb3VyY2VzQ29udGVudCI6WyJleHBvcnQgZGVmYXVsdCBcIjhkMTVjNzhkZWYyZlwiXG5pZiAobW9kdWxlLmhvdCkgeyBtb2R1bGUuaG90LmFjY2VwdCgpIH1cbiJdLCJuYW1lcyI6W10sImlnbm9yZUxpc3QiOlswXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///(ssr)/./node_modules/react-toastify/dist/ReactToastify.css\n");
 
 /***/ }),
 
