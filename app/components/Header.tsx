@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { useSession, signOut } from 'next-auth/react';
 import { useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { toast } from 'react-toastify';
 
 export default function Header() {
   const { data: session } = useSession();
@@ -12,6 +13,7 @@ export default function Header() {
 
   const handleLogout = async () => {
     await signOut({ redirect: true, callbackUrl: "/" });
+    toast.success("You have been logged out.");
   };
 
   return (
@@ -35,13 +37,13 @@ export default function Header() {
               <div className="absolute right-0 mt-2 w-48 bg-white rounded-md shadow-lg py-1 border border-black/10 z-50">
                 <Link
                   href="/orders"
-                  className="block px-4 py-2 text-sm text-black hover:bg-black/5"
+                  className="block px-4 py-2 text-sm text-black hover:bg-black/5 text-center"
                 >
                   My Orders
                 </Link>
                 <button
                   onClick={handleLogout}
-                  className="block w-full text-left px-4 py-2 text-sm text-black hover:bg-black/5"
+                  className="block w-full text-center px-4 py-2 text-sm text-black hover:bg-black/5"
                 >
                   Sign Out
                 </button>

@@ -20,6 +20,24 @@ interface Order {
   items: OrderItem[];
 }
 
+const STATUS_STYLES: Record<string, string> = {
+  pending: 'bg-yellow-100 text-yellow-800',
+  processing: 'bg-blue-100 text-blue-800',
+  shipped: 'bg-purple-100 text-purple-800',
+  delivered: 'bg-green-100 text-green-800',
+  cancelled: 'bg-red-100 text-red-800',
+  completed: 'bg-black/5 text-black',
+};
+
+const STATUS_LABELS: Record<string, string> = {
+  pending: 'Order received, awaiting processing',
+  processing: 'Order is being prepared',
+  shipped: 'Order has shipped',
+  delivered: 'Order delivered',
+  cancelled: 'Order cancelled',
+  completed: 'Order completed',
+};
+
 export default function OrdersPage() {
   const { data: session, status } = useSession();
   const router = useRouter();
@@ -106,9 +124,10 @@ export default function OrdersPage() {
         ) : (
           <div className="space-y-8">
             {orders.map((order) => (
-              <div
+              <Link
                 key={order.id}
-                className="bg-white p-6 rounded-lg border border-black/10"
+                href={`/orders/${order.id}`}
+                className="block bg-white p-6 rounded-lg border border-black/10 hover:shadow-lg transition-shadow"
               >
                 <div className="flex justify-between items-center mb-6">
                   <div>
@@ -121,13 +140,7 @@ export default function OrdersPage() {
                   </div>
                   <div>
                     <span
-                      className={`px-3 py-1 text-sm uppercase tracking-wider ${
-                        order.status === 'completed'
-                          ? 'bg-black/5 text-black'
-                          : order.status === 'pending'
-                          ? 'bg-black/5 text-black'
-                          : 'bg-black/5 text-black'
-                      }`}
+                      className={`px-3 py-1 text-sm uppercase tracking-wider rounded font-semibold ${STATUS_STYLES[order.status] || 'bg-black/5 text-black'}`}
                     >
                       {order.status.charAt(0).toUpperCase() + order.status.slice(1)}
                     </span>
@@ -154,7 +167,7 @@ export default function OrdersPage() {
                     </span>
                   </div>
                 </div>
-              </div>
+              </Link>
             ))}
           </div>
         )}
