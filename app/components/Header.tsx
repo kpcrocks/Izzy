@@ -18,6 +18,13 @@ export default function Header() {
 
   return (
     <header className="w-full py-4 px-8 text-center border-b border-black/10 relative bg-[#1a2639]">
+      <div className="absolute top-1/2 -translate-y-1/2 left-8 flex items-center">
+        <Link href="/" className="text-white hover:text-gray-300 flex items-center justify-center w-8 h-8">
+          <svg className="w-7 h-7" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2.5" viewBox="0 0 24 24" stroke="currentColor">
+            <path d="M3 12l9-8 9 8M4 10v10a2 2 0 002 2h3m6 0h3a2 2 0 002-2V10" />
+          </svg>
+        </Link>
+      </div>
       <Link href="/" className="text-3xl font-serif text-white">Izzles</Link>
       
       {/* Icons */}

@@ -3,9 +3,12 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useCart } from '../../context/CartContext';
 import { toast } from 'react-toastify';
+import { useEffect, useState } from 'react';
 
 export default function GraceTee() {
   const { addItem } = useCart();
+  const [stock, setStock] = useState<number | null>(null);
+  const [loadingStock, setLoadingStock] = useState(true);
   const product = {
     id: 'grace-tshirt',
     name: 'Saved by Grace Tee',
@@ -15,6 +18,15 @@ export default function GraceTee() {
     quantity: 1,
     size: 'M',
   };
+
+  useEffect(() => {
+    fetch('/api/products/grace-tshirt/stock')
+      .then(res => res.json())
+      .then(data => setStock(data.stock))
+      .catch(() => setStock(null))
+      .finally(() => setLoadingStock(false));
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f5f5dc]">
       <header className="w-full py-12 px-8 text-center">
@@ -32,6 +44,15 @@ export default function GraceTee() {
             className="rounded-lg"
           />
         </div>
+        {loadingStock ? (
+          <p className="text-black/70 mb-2">Checking stock...</p>
+        ) : stock === 0 ? (
+          <p className="text-red-600 font-semibold mb-2">Out of Stock</p>
+        ) : stock !== null && stock < 5 ? (
+          <p className="text-yellow-600 font-semibold mb-2">Low Stock ({stock} left)</p>
+        ) : (
+          <p className="text-green-700 font-semibold mb-2">In Stock</p>
+        )}
         <p className="text-xl text-black mb-4">$35.00</p>
         <button
           onClick={() => {

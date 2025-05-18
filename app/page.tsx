@@ -201,8 +201,9 @@ export default function Home() {
               <h4 className="font-serif text-lg mb-4 text-black">Customer Care</h4>
               <ul className="space-y-2">
                 <li><Link href="/shipping" className="text-black/70 hover:text-[#1a2639]">Shipping Info</Link></li>
-                <li><Link href="/returns" className="text-black/70 hover:text-[#1a2639]">Returns</Link></li>
+                <li><Link href="/returns" className="text-black/70 hover:text-[#1a2639]">Return Policy</Link></li>
                 <li><Link href="/essentials/size-guide-page" className="text-black/70 hover:text-[#1a2639]">Size Guide</Link></li>
+                <li><Link href="/faq" className="text-black/70 hover:text-[#1a2639]">FAQ</Link></li>
               </ul>
             </div>
             <div>

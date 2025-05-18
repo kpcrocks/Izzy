@@ -36,16 +36,25 @@ export async function GET(request: Request) {
         const image = product && typeof product === 'object' && 'images' in product
           ? product.images?.[0]
           : undefined;
+        const productId = product && typeof product === 'object' && 'id' in product
+          ? product.id
+          : '';
 
         return {
           name: item.description,
           quantity: item.quantity,
           amount: item.amount_total,
           image,
+          productId,
+          variantId: item.price?.id || undefined,
+          description: item.description
         };
       }),
       created: new Date(session.created * 1000).toLocaleDateString(),
     };
+
+    // Log the order details for demonstration
+    console.log('Stripe Order Details:', JSON.stringify(orderDetails, null, 2));
 
     return NextResponse.json(orderDetails);
   } catch (error) {

@@ -7,15 +7,27 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
-    subject: '',
     message: ''
   });
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // Here you would typically send the form data to your backend
-    toast.success('Message sent! We\'ll get back to you soon.');
-    setFormData({ name: '', email: '', subject: '', message: '' });
+    setLoading(true);
+    try {
+      const res = await fetch('/api/contact-messages', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) throw new Error('Failed to send message');
+      toast.success("Message sent! We'll get back to you soon.");
+      setFormData({ name: '', email: '', message: '' });
+    } catch (err) {
+      toast.error('There was a problem sending your message. Please try again.');
+    } finally {
+      setLoading(false);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -98,21 +110,6 @@ export default function Contact() {
               </div>
 
               <div>
-                <label htmlFor="subject" className="block text-sm uppercase tracking-wider text-black/70 mb-2">
-                  Subject
-                </label>
-                <input
-                  type="text"
-                  id="subject"
-                  name="subject"
-                  value={formData.subject}
-                  onChange={handleChange}
-                  required
-                  className="w-full px-4 py-3 border-2 border-[#1a2639]/10 bg-white focus:outline-none focus:border-[#1a2639] transition-colors"
-                />
-              </div>
-
-              <div>
                 <label htmlFor="message" className="block text-sm uppercase tracking-wider text-black/70 mb-2">
                   Message
                 </label>
@@ -130,8 +127,9 @@ export default function Contact() {
               <button
                 type="submit"
                 className="w-full bg-[#1a2639] text-white py-4 uppercase tracking-wider hover:bg-[#1a2639]/80 transition-colors"
+                disabled={loading}
               >
-                Send Message
+                {loading ? 'Sending...' : 'Send Message'}
               </button>
             </form>
           </div>

@@ -4,6 +4,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useEffect, useState } from 'react';
 import { useCart } from '../context/CartContext';
+import { useSession } from 'next-auth/react';
 
 interface OrderDetails {
   id: string;
@@ -25,15 +26,20 @@ interface OrderDetails {
     quantity: number;
     amount: number;
     image: string;
+    productId: string;
+    variantId?: string;
+    description?: string;
   }[];
   created: string;
 }
 
 export default function PaymentSuccess() {
   const { clearCart } = useCart();
+  const { data: session } = useSession();
   const [orderDetails, setOrderDetails] = useState<OrderDetails | null>(null);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [orderCreated, setOrderCreated] = useState(false);
 
   useEffect(() => {
     // Clear the cart after successful payment
@@ -52,11 +58,38 @@ export default function PaymentSuccess() {
     // Fetch order details
     fetch(`/api/get-order-details?session_id=${sessionId}`)
       .then(res => res.json())
-      .then(data => {
+      .then(async data => {
         if (data.error) {
           setError(data.error);
-        } else {
-          setOrderDetails(data);
+          setLoading(false);
+          return;
+        }
+        setOrderDetails(data);
+        // POST to /api/orders to persist order and send email
+        if (!orderCreated && data && session?.user?.email) {
+          const backendItems = data.items.map((item: any) => ({
+            productId: item.productId || item.id || '',
+            quantity: item.quantity,
+            price: item.amount / 100,
+            variantId: item.variantId,
+            name: item.name,
+            description: item.description,
+            image: item.image
+          }));
+          await fetch('/api/orders', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              sessionId: data.id,
+              items: backendItems,
+              shipping: data.shipping,
+              total: data.amount_total / 100,
+              email: session.user.email,
+              customerEmail: data.customer_email,
+              createdAt: data.created
+            }),
+          });
+          setOrderCreated(true);
         }
         setLoading(false);
       })
@@ -64,7 +97,7 @@ export default function PaymentSuccess() {
         setError('Failed to fetch order details');
         setLoading(false);
       });
-  }, [clearCart]);
+  }, [clearCart, session, orderCreated]);
 
   if (loading) {
     return (
